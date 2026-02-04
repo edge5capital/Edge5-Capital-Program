@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDGE5 CAPITAL - Capital Allocation Program</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F5E6C8;
+            --gold-dark: #B8941E;
+            --black: #0A0A0A;
+            --gray-dark: #1a1a1a;
+            --gray-med: #2a2a2a;
+            --white: #FFFFFF;
+            --green: #10B981;
+            --red: #EF4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212,175,55,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212,175,55,0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+        
+        .logo-sub {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--gold-light);
+            opacity: 0.8;
+            margin-top: 0.2rem;
+            text-transform: uppercase;
+        }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212,175,55,0.5);
+        }
+        
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .section-title .gold { color: var(--gold); }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--white);
+            opacity: 0.75;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero .gold-text {
+            color: var(--gold);
+        }
+        
+        .hero .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--gold-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 850px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-box {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            border: 1px solid rgba(212,175,55,0.25);
+            transition: all 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+        }
+        
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            display: block;
+        }
+        
+        .stat-label {
+            color: var(--white);
+            opacity: 0.9;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            padding: 1.3rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 25px rgba(212,175,55,0.4);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(212,175,55,0.6);
+        }
+        
+        .why-section {
+            background: linear-gradient(135deg, rgba(212,175,55,0.03), transparent);
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .why-card {
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            padding: 2.5rem;
+            border: 1px solid rgba(212,175,55,0.2);
+            transition: all 0.3s;
+        }
+        
+        .why-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+        }
+        
+        .why-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .why-card p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        
+        .value-section {
+            padding: 6rem 2rem;
+        }
+        
+        .value-box {
+            background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(239,68,68,0.05));
+            padding: 3rem;
+            border: 2px solid rgba(239,68,68,0.4);
+            margin: 3rem 0;
+        }
+        
+        .value-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+        
+        .value-point::before {
+            content: "▸";
+            color: var(--red);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .what-section {
+            background: linear-gradient(135deg, rgba(212,175,55,0.04), transparent);
+        }
+        
+        .what-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .what-card {
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            padding: 2.5rem;
+            border: 1px solid rgba(212,175,55,0.2);
+            transition: all 0.3s;
+        }
+        
+        .what-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+        }
+        
+        .what-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .what-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .what-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            opacity: 0.9;
+        }
+        
+        .what-card li::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        
+        .how-section {
+            padding: 6rem 2rem;
+        }
+        
+        .how-steps {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            border: 1px solid rgba(212,175,55,0.2);
+            transition: all 0.3s;
+        }
+        
+        .step:hover {
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+        }
+        
+        .step-num {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .step-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .step-content p {
+            opacity: 0.9;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .split-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(212,175,55,0.03), transparent);
+        }
+        
+        .split-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .split-box {
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            padding: 3rem;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .split-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .split-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .split-box li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        
+        .split-box li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        
+        .profit-share {
+            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.05));
+            padding: 2.5rem;
+            border: 2px solid rgba(16,185,129,0.4);
+            margin-top: 3rem;
+        }
+        
+        .profit-share h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+        
+        .profit-share p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        .ownership-section {
+            padding: 6rem 2rem;
+        }
+        
+        .ownership-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .ownership-card {
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            padding: 2.5rem;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .ownership-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .ownership-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .ownership-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            opacity: 0.9;
+        }
+        
+        .ownership-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        
+        .risk-section {
+            background: linear-gradient(135deg, rgba(239,68,68,0.1), transparent);
+            padding: 6rem 2rem;
+        }
+        
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .risk-card {
+            background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(239,68,68,0.02));
+            padding: 2.5rem;
+            border: 1px solid rgba(239,68,68,0.3);
+        }
+        
+        .risk-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        
+        .risk-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .risk-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            opacity: 0.9;
+        }
+        
+        .risk-card li::before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            color: var(--red);
+        }
+        
+        .example-section {
+            padding: 6rem 2rem;
+        }
+        
+        .example-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            padding: 2.5rem;
+            border: 1px solid rgba(212,175,55,0.3);
+        }
+        
+        .example-box.box-100k {
+            background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(139,92,246,0.05));
+            border-color: rgba(139,92,246,0.5);
+        }
+        
+        .example-box.box-200k {
+            background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(236,72,153,0.05));
+            border-color: rgba(236,72,153,0.5);
+        }
+        
+        .example-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .box-100k h3 {
+            background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(139,92,246,0.1));
+            color: #C4B5FD;
+        }
+        
+        .box-200k h3 {
+            background: linear-gradient(135deg, rgba(236,72,153,0.3), rgba(236,72,153,0.1));
+            color: #FBCFE8;
+        }
+        
+        .example-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .example-row:last-of-type {
+            border-bottom: none;
+        }
+        
+        .example-label {
+            opacity: 0.8;
+        }
+        
+        .example-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .example-value.green {
+            color: var(--green);
+        }
+        
+        .example-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        
+        .example-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(212,175,55,0.1);
+            border: 2px solid var(--gold);
+            text-align: center;
+        }
+        
+        .example-result-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-result-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+        
+        .example-disclaimer {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(100,100,100,0.2);
+            border-left: 3px solid rgba(212,175,55,0.5);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .faq-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(212,175,55,0.03), transparent);
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+        
+        .faq-item {
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            border: 1px solid rgba(212,175,55,0.2);
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--gold);
+        }
+        
+        .faq-question {
+            padding: 1.8rem 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 2rem;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 2rem;
+        }
+        
+        .faq-answer p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        
+        .qualification-section {
+            padding: 6rem 2rem;
+        }
+        
+        .qual-form {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            padding: 3rem;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .form-q {
+            margin-bottom: 2.5rem;
+        }
+        
+        .form-q label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gold-light);
+        }
+        
+        .form-opts {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-opt {
+            flex: 1;
+            padding: 1.2rem;
+            background: rgba(42,42,42,0.5);
+            border: 2px solid rgba(212,175,55,0.3);
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .form-opt:hover {
+            border-color: var(--gold);
+            background: rgba(212,175,55,0.1);
+        }
+        
+        .form-opt.selected {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border-color: var(--gold);
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212,175,55,0.5);
+        }
+        
+        .form-result {
+            margin-top: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .form-result.success {
+            background: rgba(16,185,129,0.15);
+            border: 2px solid var(--green);
+        }
+        
+        .form-result.error {
+            background: rgba(239,68,68,0.15);
+            border: 2px solid var(--red);
+        }
+        
+        .transparency-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(212,175,55,0.04), transparent);
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(239,68,68,0.05));
+            padding: 2.5rem;
+            border: 2px solid rgba(239,68,68,0.4);
+            margin: 3rem 0;
+        }
+        
+        .warning-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        
+        .warning-box p {
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        .trans-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .trans-point {
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+            padding: 2.5rem;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .trans-point h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .trans-point p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        .footer {
+            background: var(--gray-dark);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        /* Tablets y pantallas medianas */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.5rem; }
+            .hero .tagline { font-size: 1.7rem; }
+            .section-title { font-size: 2.5rem; }
+        }
+        
+        /* Móviles y pantallas pequeñas */
+        @media (max-width: 768px) {
+            .hero h1 { 
+                font-size: 2.2rem;
+                line-height: 1.2;
+                padding: 0 1rem;
+            }
+            .hero .tagline { 
+                font-size: 1.2rem;
+                padding: 0 1rem;
+            }
+            .hero .subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            .section-title { 
+                font-size: 1.8rem;
+                padding: 0 1rem;
+            }
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            .why-grid, .what-grid, .split-content, .ownership-grid, .risk-grid, .example-boxes {
+                grid-template-columns: 1fr;
+            }
+            .step {
+                grid-template-columns: 1fr;
+            }
+            .step-num {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            .step-content h3 {
+                font-size: 1.4rem;
+            }
+            .navbar {
+                padding: 1rem;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
+            .logo-sub {
+                font-size: 0.6rem;
+            }
+            .nav-cta {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.8rem;
+            }
+            .cta-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            .stat-num {
+                font-size: 2rem;
+            }
+            .stat-label {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Móviles muy pequeños */
+        @media (max-width: 480px) {
+            .hero h1 { 
+                font-size: 1.8rem;
+            }
+            .hero .tagline { 
+                font-size: 1rem;
+            }
+            .section-title { 
+                font-size: 1.5rem;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div>
+                <div class="logo">EDGE5 CAPITAL</div>
+                <div class="logo-sub">Capital Allocation Program</div>
+            </div>
+            <a href="#califica" class="nav-cta">Calificar Ahora</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div>
+            <h1>Vos Ponés el Challenge<br><span class="gold-text">Nosotros Hacemos el Trabajo</span></h1>
+            <p class="tagline">Ganamos juntos.</p>
+            <p class="subtitle">Financiá challenges de fondeo (100k o 200k) y nosotros los operamos con sistemas automatizados, +10 años de experiencia institucional e infraestructura profesional. Recuperás tu inversión en el primer retiro exitoso, luego compartimos ganancias 50/50 hasta que multipliques tu inversión por 6 veces.</p>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="stat-num">6x</span>
+                    <span class="stat-label">Retorno Objetivo</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">50/50</span>
+                    <span class="stat-label">Reparto Equitativo</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">+10</span>
+                    <span class="stat-label">Años de Experiencia</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">0%</span>
+                    <span class="stat-label">Emoción Humana</span>
+                </div>
+            </div>
+            
+            <a href="#califica" class="cta-btn">Quiero Participar</a>
+        </div>
+    </section>
+
+    <section class="why-section">
+        <h2 class="section-title">¿Por Qué <span class="gold">EDGE5 CAPITAL?</span></h2>
+        <p class="section-subtitle">La realidad del trading manual en empresas de fondeo es dura: la mayoría de los traders no logran pasar las pruebas de evaluación ni mantener la consistencia necesaria para cobrar regularmente. Nosotros cambiamos esas probabilidades.</p>
+
+        <div class="why-grid">
+            <div class="why-card">
+                <h3>🎯 Pasar FTMO es Extremadamente Difícil</h3>
+                <p>Las empresas de fondeo tienen reglas estrictas: drawdown diario máximo, drawdown total limitado, profit targets en dos etapas. El 90% de los traders fracasan debido a presión psicológica, falta de disciplina y estrategias inconsistentes. Su negocio principal es que NO pases las pruebas.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>🤖 Sistemas Sin Emociones</h3>
+                <p>Operamos con VectorEA, un Expert Advisor optimizado específicamente para cumplir reglas de fondeo. Sin miedo, sin codicia, sin errores emocionales. Solo ejecución precisa basada en datos y backtesting exhaustivo. La ventaja definitiva sobre el trading manual.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>🏛️ Infraestructura Profesional Completa</h3>
+                <p>No es solo un algoritmo: es un ecosistema completo. Infraestructura de alto rendimiento, centro de monitoreo 24/7, cuatro capas de protección de equidad, kill switches automáticos, y capacidad de ejecución inmediata sin delays. Todo diseñado para maximizar probabilidades de éxito.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>👔 +10 Años de Experiencia Institucional</h3>
+                <p>Nuestro equipo tiene más de una década de experiencia en mercados financieros, gestión de capital institucional y sistemas automatizados. Sabemos exactamente cómo pasar evaluaciones de fondeo y mantener cuentas operativas con retiros consistentes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-section">
+        <h2 class="section-title">Riesgo vs <span class="gold">Recompensa</span></h2>
+        <p class="section-subtitle">Una propuesta de valor que raramente encontrarás en el sistema financiero tradicional</p>
+
+        <div class="value-box">
+            <h3>Tu Riesgo Máximo</h3>
+            <div class="value-point">El costo del challenge (€540 - €1,080)</div>
+            <div class="value-point">Ese es tu ÚNICO gasto y tu exposición máxima al riesgo</div>
+            <div class="value-point">Sin costos ocultos, suscripciones ni pagos adicionales</div>
+            <div class="value-point">Riesgo limitado y conocido desde el inicio</div>
+        </div>
+    </section>
+
+    <section class="what-section">
+        <h2 class="section-title">Qué <span class="gold">Ofrecemos</span></h2>
+        <p class="section-subtitle">Un proceso simple y transparente diseñado para maximizar resultados compartidos</p>
+
+        <div class="what-grid">
+            <div class="what-card">
+                <h3>📊 Infraestructura Profesional</h3>
+                <p>Ecosistema completo de trading diseñado para garantizar funcionalidad, transparencia y ejecución 100% óptima:</p>
+                <ul>
+                    <li>Infraestructura de alto rendimiento con máxima estabilidad</li>
+                    <li>Centro de monitoreo profesional 24/7</li>
+                    <li>Control total sobre todas las cuentas en tiempo real</li>
+                    <li>Capacidad de ejecución inmediata sin delays</li>
+                    <li>Preparados para cualquier eventualidad inesperada en el mercado</li>
+                </ul>
+            </div>
+
+            <div class="what-card">
+                <h3>🛡️ Cuatro Capas de Protección de Equidad</h3>
+                <p>Sistema multinivel de seguridad para proteger el capital ante cualquier eventualidad:</p>
+                <ul>
+                    <li>Cuatro capas independientes de control de equidad</li>
+                    <li>Kill switches automáticos ante anomalías</li>
+                    <li>Gestión de riesgo optimizada para reglas de fondeo</li>
+                    <li>Sistemas redundantes que garantizan operación continua</li>
+                </ul>
+            </div>
+
+            <div class="what-card">
+                <h3>📈 Rendimiento Comprobado</h3>
+                <p>No operamos a ciegas. Cada estrategia está rigurosamente testeada:</p>
+                <ul>
+                    <li>Backtesting exhaustivo con datos históricos reales</li>
+                    <li>Forward testing en cuentas live</li>
+                    <li>Optimización continua mediante machine learning</li>
+                    <li>Configuraciones específicas para cumplir reglas de FTMO y similares</li>
+                </ul>
+            </div>
+
+            <div class="what-card">
+                <h3>⚙️ Optimizado 100% para Fondeo</h3>
+                <p>Cada parámetro está calibrado para las exigencias de empresas de fondeo:</p>
+                <ul>
+                    <li>Respeto estricto de drawdown diario y total</li>
+                    <li>Alcance de profit targets en ambas fases</li>
+                    <li>Generación de retiros consistentes y sostenibles</li>
+                    <li>Adaptación a las reglas específicas de cada prop firm</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section">
+        <h2 class="section-title">Cómo <span class="gold">Funciona</span></h2>
+        <p class="section-subtitle">Un proceso simple y transparente diseñado para maximizar resultados compartidos</p>
+
+        <div class="how-steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h3>Vos Adquirís el Challenge</h3>
+                    <p>Elegís una evaluación de empresa de fondeo de 100k o 200k con una empresa reconocida. El costo del challenge es tu única inversión inicial. El challenge se registra a nombre del gestor o su equipo desde el inicio, permitiendo total libertad operativa para cumplir las reglas de fondeo sin restricciones.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h3>Nosotros lo Operamos</h3>
+                    <p>Nuestro equipo y sistemas automatizados (VectorEA) operan el challenge cumpliendo con todas las reglas de fondeo. Utilizamos +10 años de experiencia, estrategias probadas, gestión profesional del riesgo y tecnología institucional para maximizar las probabilidades de pasar las evaluaciones.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h3>Pasamos las Evaluaciones</h3>
+                    <p>Una vez superados los objetivos de profit en ambas fases y cumplidas todas las reglas de drawdown diario y total, la cuenta pasa a estar financiada. La empresa de fondeo asigna una cuenta financiada para operar. La cuenta continúa a nombre del gestor o su estructura operativa.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h3>Retiramos y Compartimos</h3>
+                    <p>Operamos la cuenta financiada generando retiros regulares. En el primer retiro exitoso, recuperás el 100% del costo de tu challenge. A partir de ahí, compartimos todas las ganancias 50/50 según lo acordado.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">5</div>
+                <div class="step-content">
+                    <h3>Finalizamos el Acuerdo</h3>
+                    <p>Una vez que hayas recibido 5 veces el costo del challenge en ganancias compartidas (más tu reembolso inicial), el acuerdo finaliza automáticamente. Vos habrás multiplicado tu inversión por 6 veces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="split-section">
+        <h2 class="section-title">Tu Aporte vs <span class="gold">Nuestro Aporte</span></h2>
+        <p class="section-subtitle">Una asociación clara y transparente donde ambas partes aportan valor real</p>
+
+        <div class="split-content">
+            <div class="split-box">
+                <h3>Tu Aporte</h3>
+                <ul>
+                    <li>Adquirís una evaluación de empresa de fondeo (€540 - €1,080)</li>
+                    <li>Ese es tu único gasto y tu exposición máxima al riesgo</li>
+                    <li>No hay costos ocultos ni pagos adicionales de ningún tipo</li>
+                    <li>Recuperás el 100% del costo en el primer retiro exitoso</li>
+                </ul>
+            </div>
+
+            <div class="split-box">
+                <h3>Nuestro Aporte</h3>
+                <ul>
+                    <li>Gestión profesional con +10 años de experiencia institucional</li>
+                    <li>Sistema automatizado VectorEA optimizado para fondeo</li>
+                    <li>Infraestructura completa de trading de nivel profesional</li>
+                    <li>Expertise en cumplimiento de reglas de empresas de fondeo</li>
+                    <li>Tiempo, trabajo y recursos para operar la cuenta exitosamente</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="profit-share">
+            <h4>Reparto de Ganancias:</h4>
+            <p>Todas las ganancias generadas por la cuenta fondeada se dividen 50/50. Primero recuperás tu inversión inicial completa, luego compartimos ganancias hasta que recibas 5 veces el costo del challenge. En ese momento, el acuerdo finaliza y vos habrás multiplicado tu inversión inicial por 6 veces (1x reembolso + 5x ganancias).</p>
+        </div>
+    </section>
+
+    <section class="ownership-section">
+        <h2 class="section-title">Propiedad de la <span class="gold">Cuenta</span></h2>
+        <p class="section-subtitle">Claridad absoluta sobre cómo funciona la estructura operativa</p>
+
+        <div class="ownership-grid">
+            <div class="ownership-card">
+                <h4>Propiedad de la Cuenta</h4>
+                <ul>
+                    <li>El challenge se registra a nombre del gestor o su estructura desde el inicio</li>
+                    <li>Esta configuración permite libertad operativa total sin restricciones</li>
+                    <li>Es la única forma viable de operar profesionalmente cumpliendo reglas de fondeo</li>
+                    <li>Tu participación está definida contractualmente en el acuerdo firmado</li>
+                </ul>
+            </div>
+
+            <div class="ownership-card">
+                <h4>Riesgos Potenciales</h4>
+                <ul>
+                    <li>El trading conlleva riesgo inherente de pérdida de capital</li>
+                    <li>Existe posibilidad de que no se pasen las evaluaciones</li>
+                    <li>Las cuentas fondeadas pueden perder su financiación si se violan reglas</li>
+                    <li>No hay garantías de resultados específicos ni plazos definidos</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="example-section">
+        <h2 class="section-title">Ejemplo Numérico del <span class="gold">Programa Edge5 Capital</span></h2>
+        <p class="section-subtitle">Así funcionan los números en nuestro sistema</p>
+
+        <div class="example-boxes">
+            <div class="example-box box-100k">
+                <h3>Cuenta 100k</h3>
+                
+                <div class="example-row">
+                    <span class="example-label">Costo</span>
+                    <span class="example-value">€540</span>
+                </div>
+                
+                <div class="example-row">
+                    <span class="example-label">Capital</span>
+                    <span class="example-value">USD 100,000</span>
+                </div>
+                
+                <div class="example-row">
+                    <span class="example-label">Refund</span>
+                    <span class="example-value green">€540</span>
+                </div>
+                
+                <div class="example-row">
+                    <span class="example-label">Participación</span>
+                    <span class="example-value"><span class="example-badge">50% hasta X5</span></span>
+                </div>
+                
+                <div class="example-row">
+                    <span class="example-label">Objetivo</span>
+                    <span class="example-value">€2,700</span>
+                </div>
+                
+                <div class="example-result">
+                    <div class="example-result-label">Resultado Final</div>
+                    <div class="example-result-value">€3,240</div>
+                </div>
+            </div>
+
+            <div class="example-box box-200k">
+                <h3>Cuenta 200k</h3>
+                
+                <div class="example-row">
+                    <span class="example-label">Costo</span>
+                    <span class="example-value">€1,080</span>
+                </div>
+                
+                <div class="example-row">
+                    <span class="example-label">Capital</span>
+                    <span class="example-value">USD 200,000</span>
+                </div>
+                
+                <div class="example-row">
+                    <span class="example-label">Refund</span>
+                    <span class="example-value green">€1,080</span>
+                </div>
+                
+                <div class="example-row">
+                    <span class="example-label">Participación</span>
+                    <span class="example-value"><span class="example-badge">50% hasta X5</span></span>
+                </div>
+                
+                <div class="example-row">
+                    <span class="example-label">Objetivo</span>
+                    <span class="example-value">€5,400</span>
+                </div>
+                
+                <div class="example-result">
+                    <div class="example-result-label">Resultado Final</div>
+                    <div class="example-result-value">€6,480</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="example-disclaimer">
+            * Los valores mostrados son ejemplos estimativos. Los costos pueden variar según la empresa de fondeo elegida. No constituye garantía de resultados. El trading conlleva riesgos y las ganancias pueden variar.
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title">Preguntas <span class="gold">Frecuentes</span></h2>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Qué es exactamente este programa?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    Es un modelo de alianza estratégica donde vos financiás un challenge de fondeo (de empresas como FTMO) y nosotros lo operamos profesionalmente usando sistemas automatizados, +10 años de experiencia y gestión experta. Si generamos ganancias, las compartimos 50/50 hasta que vos recuperes 6 veces tu inversión inicial (1x reembolso + 5x ganancias).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Por qué la cuenta está a nombre del gestor desde el inicio?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    Para operar con total libertad operativa y cumplir las reglas de fondeo sin restricciones desde el primer momento. Esto no afecta tu derecho a recibir el 50% de las ganancias según el acuerdo firmado. Todo está documentado legalmente y respaldado por contrato vinculante.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Garantizan resultados?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    No, porque el trading siempre implica riesgo y ningún resultado puede garantizarse. Sin embargo, ese riesgo se minimiza significativamente gracias a una estructura profesional que combina +10 años de experiencia, sistemas automatizados sin emociones, infraestructura institucional y cuatro capas de protección del capital.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Cuál es mi riesgo real?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    Tu exposición máxima es el costo del challenge que compraste (entre €549 - €1,099). No hay costos adicionales, suscripciones ni pagos ocultos de ningún tipo. Si la cuenta se pierde, perdés ese monto.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Cuándo y cómo recibo mis ganancias?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Una vez que la cuenta pasa a estar fondeada y generamos retiros exitosos de la prop firm, procedemos con los pagos. En el primer retiro, recuperás el 100% del costo de tu challenge. A partir de ahí, cada vez que retiramos, compartimos las ganancias 50/50 hasta que recibas 5 veces el costo del challenge (momento en el cual el acuerdo finaliza y vos habrás multiplicado tu inversión por 6x).</p>
+                    <p style="margin-top: 1rem;">Todos los pagos se realizan exclusivamente a la dirección de billetera de criptomonedas (wallet) que indiques. Sos el único responsable de proporcionar una dirección correcta y operativa.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Qué es VectorEA exactamente?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    VectorEA es nuestro Expert Advisor, específicamente optimizado para empresas de fondeo. Configuraciones diseñadas para pasar evaluaciones respetando drawdown diario y total, alcanzar profit targets en 2 etapas, y generar retiros consistentes. Opera sin emociones, basado en datos y backtesting riguroso. Incluye ecosistema completo: infraestructura profesional, monitoreo 24/7, cuatro capas de protección y optimización continua mediante machine learning.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Por qué es mejor que intentar pasar FTMO yo mismo?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    Estadísticamente, la mayoría de traders no logran pasar las evaluaciones de fondeo ni mantener consistencia. Las razones: presión psicológica, errores emocionales, falta de disciplina, estrategias no optimizadas para cumplir reglas estrictas (drawdown diario, drawdown total, profit targets en 2 etapas). Nosotros eliminamos completamente el factor emocional, operamos con sistemas probados y optimizados específicamente para empresas de fondeo, contamos con más de 10 años de experiencia y tenemos infraestructura profesional que la mayoría de los traders individuales jamás podrían tener.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="qualification-section" id="califica">
+        <h2 class="section-title">¿Te <span class="gold">Interesa?</span></h2>
+        <p class="section-subtitle">Si esto encaja con lo que buscás, contestá las siguientes preguntas. Si calificás, nos contactaremos por privado para confirmar condiciones y firmar el acuerdo.</p>
+
+        <div class="qual-form">
+            <form id="qualForm">
+                <div class="form-q">
+                    <label>1. ¿Entendés que el challenge y la cuenta estarán a nombre del gestor o su núcleo operativo desde el inicio?</label>
+                    <div class="form-opts">
+                        <div class="form-opt" data-q="1" data-v="si">Sí</div>
+                        <div class="form-opt" data-q="1" data-v="no">No</div>
+                    </div>
+                </div>
+
+                <div class="form-q">
+                    <label>2. ¿Entendés que no hay garantías y que existe riesgo de que no se pasen las evaluaciones o se pierda la cuenta?</label>
+                    <div class="form-opts">
+                        <div class="form-opt" data-q="2" data-v="si">Sí</div>
+                        <div class="form-opt" data-q="2" data-v="no">No</div>
+                    </div>
+                </div>
+
+                <div class="form-q">
+                    <label>3. ¿Contás con el capital para adquirir un challenge de 100k o 200k (€540-€1,080)?</label>
+                    <div class="form-opts">
+                        <div class="form-opt" data-q="3" data-v="si">Sí</div>
+                        <div class="form-opt" data-q="3" data-v="no">No</div>
+                    </div>
+                </div>
+
+                <div class="form-q">
+                    <label>4. ¿Estás de acuerdo con el reparto 50/50 y recibir hasta 6x tu inversión (1x reembolso + 5x ganancias)?</label>
+                    <div class="form-opts">
+                        <div class="form-opt" data-q="4" data-v="si">Sí</div>
+                        <div class="form-opt" data-q="4" data-v="no">No</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="form-submit">✅ Enviar Respuestas</button>
+
+                <div id="formRes" class="form-result"></div>
+            </form>
+        </div>
+    </section>
+
+    <section class="transparency-section">
+        <h2 class="section-title">Transparencia <span class="gold">Total</span></h2>
+        <p class="section-subtitle">Honestidad y claridad en cada paso del proceso</p>
+
+        <div class="warning-box">
+            <h3>⚠️ Advertencia Importante</h3>
+            <p>El trading conlleva riesgo y los resultados no pueden garantizarse. Es recomendable no comprometer dinero que no puedas permitirte perder.</p>
+            <p style="margin-top: 1rem;">En este servicio, tu responsabilidad económica se limita al costo del challenge que adquirís. A partir de ahí, accedés a una estructura profesional con +10 años de experiencia, tecnología institucional y sistemas sin emociones que te permiten operar grandes sumas de capital y participar en un tipo de crecimiento (ROI 6x) que es prácticamente imposible de encontrar en el sistema financiero tradicional.</p>
+        </div>
+
+        <div class="trans-points">
+            <div class="trans-point">
+                <h4>Sin Promesas Falsas</h4>
+                <p>No prometemos retornos garantizados ni resultados específicos. El trading tiene riesgos inherentes.</p>
+            </div>
+            <div class="trans-point">
+                <h4>Riesgo Limitado</h4>
+                <p>Tu exposición máxima es el costo del challenge inicial. Sin costos ocultos ni sorpresas.</p>
+            </div>
+            <div class="trans-point">
+                <h4>Intereses Alineados</h4>
+                <p>Solo ganamos cuando tú ganas, compartiendo el éxito 50/50 hasta 6x tu inversión.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="logo">EDGE5 CAPITAL</div>
+            <div class="logo-sub">CAPITAL ALLOCATION PROGRAM</div>
+            <p style="font-size: 1rem; opacity: 0.8; margin: 2rem 0 1rem;">Vos ponés el challenge. Nosotros hacemos el trabajo. Ganamos juntos.</p>
+            <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.5;">
+                © 2024 EDGE5 CAPITAL. Todos los derechos reservados.<br>
+                El trading conlleva riesgo y puede resultar en pérdida de capital. Solo invierte dinero que puedas permitirte perder.<br>
+                Este servicio es privado y no constituye asesoramiento financiero.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const wasActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        const formAnswers = { 1: null, 2: null, 3: null, 4: null };
+
+        document.querySelectorAll('.form-opt').forEach(opt => {
+            opt.addEventListener('click', function() {
+                const q = this.dataset.q;
+                const v = this.dataset.v;
+                const siblings = this.parentElement.querySelectorAll('.form-opt');
+                siblings.forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+                formAnswers[q] = v;
+            });
+        });
+
+        document.getElementById('qualForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const allAnswered = Object.values(formAnswers).every(a => a !== null);
+            
+            if (!allAnswered) {
+                alert('Por favor respondé todas las preguntas');
+                return;
+            }
+            
+            const allYes = Object.values(formAnswers).every(a => a === 'si');
+            const resultDiv = document.getElementById('formRes');
+            resultDiv.style.display = 'block';
+            
+            if (allYes) {
+                resultDiv.className = 'form-result success';
+                resultDiv.innerHTML = `
+                    <p style="font-weight: 700; margin-bottom: 1rem;">¡Felicitaciones! Calificás para participar en EDGE5 CAPITAL.</p>
+                    <p style="margin-bottom: 1.5rem;">El siguiente paso es contactarnos por WhatsApp para confirmar condiciones y comenzar el proceso.</p>
+                    <a href="https://wa.me/5493364564616?text=Hola%2C%20complet%C3%A9%20el%20formulario%20de%20EDGE5%20CAPITAL%20y%20me%20gustar%C3%ADa%20comenzar%20el%20proceso" 
+                       style="display: inline-block; background: var(--green); color: white; padding: 1.2rem 2.5rem; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;"
+                       target="_blank">
+                        💬 Contactar por WhatsApp
+                    </a>
+                `;
+            } else {
+                resultDiv.className = 'form-result error';
+                resultDiv.innerHTML = '<p style="font-weight: 700;">No calificás por ahora.</p><p style="margin-top: 0.5rem;">Es importante que comprendas completamente los términos y condiciones del programa antes de participar.</p>';
+            }
+            
+            setTimeout(() => {
+                resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
